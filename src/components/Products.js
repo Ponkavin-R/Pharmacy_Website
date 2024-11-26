@@ -33,28 +33,31 @@ const Products = () => {
   return (
     <div className="container flex flex-wrap justify-around  mx-auto p-4">
       {/* Banner */}
-      <div className="flex flex-wrap items-cente w-1/3 bg-yellow-100 rounded-lg shadow-md p-6">
-        <div className="w-full lg:h-80 lg:w-1/2">
-        <img
+      <div className="flex flex-wrap w-full bg-yellow-100 rounded-lg shadow-md p-6 sm:flex-col lg:w-1/4">
+        <div className="sm:w-full">
+          <img
             src="https://img.freepik.com/premium-photo/happy-pharmacist-paper-bag-patient-with-clipboard-signature-prescription-consultation-pharmacy-black-man-medical-healthcare-professional-giving-medication-sick-customer_590464-216997.jpg"
             alt="Healthy Hair"
             className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
           />
         </div>
-        <div className="w-full lg:w-1/2 p-6">
-          <h1 className="text-3xl font-bold text-green-700">Healthy Pharmacy Matters</h1>
-          <p className="text-lg text-gray-700 mt-2">Shop trusted medicines for every need.</p>
-          <button
-            className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
-            onClick={() => setViewAll(!viewAll)}
-          >
-            {viewAll ? "Show Less Products" : "View All Products"}
-          </button>
-        </div>
+        <div className="sm:w-full text-justify p-6">
+  <h1 className="text-3xl font-bold text-green-700">Nature's Wellness Pharmacy</h1>
+  <p className="text-lg text-gray-700 mt-2 ">
+    Explore our trusted range of medicines for all your health needs. We also specialize in crafting unique hair oils infused with natural extracts, including formulations using rabbit blood, to ensure strong and healthy hair.
+  </p>
+  <button
+    className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
+    onClick={() => setViewAll(!viewAll)}
+  >
+    {viewAll ? "Show Less Products" : "View All Products"}
+  </button>
+</div>
+
       </div>
 
       {/* Products */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 h-fit lg:grid-cols-3 gap-6 mt-8">
         {displayedProducts.map((product) => (
           <div
             key={product.id}

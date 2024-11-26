@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [showCategories, setShowCategories] = useState(false);
@@ -45,7 +46,7 @@ const Nav = () => {
             <span className="ml-2">▼</span>
           </button>
           {showCategories && (
-            <div className="absolute left-0 top-full bg-white text-black shadow-lg rounded-lg p-4 w-64">
+            <div className="absolute left-0 top-full bg-white text-black shadow-lg rounded-lg p-4 w-64 ">
               <ul className="space-y-2">
                 <li className="hover:text-green-600 flex justify-between items-center">
                   Prescription Medicines <span>›</span>
@@ -73,7 +74,7 @@ const Nav = () => {
 
         {/* Shop */}
         <div
-          className="relative hidden lg:block"
+          className="relative hidden lg:block bg-yellow-500 px-3 py-1 rounded-lg  hover:bg-yellow-600"
           onMouseEnter={() => setShowShop(true)}
           onMouseLeave={() => setShowShop(false)}
         >
@@ -123,16 +124,20 @@ const Nav = () => {
           )}
         </div>
 
+        {/* About and Contact */}
         <div className="space-x-4">
-          <a href="#contact" className="hover:text-yellow-400">
-            Contact
-          </a>
-          <a href="#about" className="hover:text-yellow-400">
+          <Link
+            to="/about"
+            className="hover:text-yellow-400 bg-yellow-500 px-2 lg:px-3 py-1 lg:py-2 text-sm lg:text-base rounded-lg font-bold hover:bg-yellow-600"
+          >
             About Us
-          </a>
-          <a href="#account" className="hover:text-yellow-400">
-            My account
-          </a>
+          </Link>
+          <Link
+            to="/contact"
+            className="hover:text-yellow-400 bg-yellow-500 px-2 lg:px-3 py-1 lg:py-2 text-sm lg:text-base rounded-lg font-bold hover:bg-yellow-600"
+          >
+            Contact
+          </Link>
         </div>
       </div>
 
@@ -188,9 +193,9 @@ const Nav = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden ${mobileMenu ? 'block' : 'hidden'} absolute top-0 left-0 w-full bg-green-700 text-white p-6`}>
-        <ul className="space-y-4">
-          <li className="hover:text-yellow-400 cursor-pointer" onClick={() => setMobileCategories(!mobileCategories)}>
+      <div className={`lg:hidden ${mobileMenu ? 'block' : 'hidden'} absolute top-60 left-1/2 transform -translate-x-1/2 bg-green-700 text-white p-6 w-40 rounded-md shadow-lg`}>
+        <ul className="space-y-6">
+          <li className="hover:text-yellow-400 hover:bg-green-500 cursor-pointer" onClick={() => setMobileCategories(!mobileCategories)}>
             All Categories
           </li>
           {mobileCategories && (
