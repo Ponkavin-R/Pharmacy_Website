@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../assest/logo.jpg';
+import Logo from '../assest/logo1.jpg';
 
 const Header = () => {
   return (
@@ -9,7 +9,7 @@ const Header = () => {
         <img
           src={Logo}
           alt="Logo"
-          className="h-36 w-28 rounded-full object-cover md:h-36 md:w-36 sm:h-36 sm:w-28 lg:h-36 lg:w-36"
+          className="h-36 w-46 md:h-36 md:w-36 sm:h-36 sm:w-28 lg:h-36 lg:w-52"
         />
         {/* Optional Logo Text */}
         {/* Uncomment below for additional branding */}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCartPlus } from "react-icons/fa"; // Import cart icon
+import { FaCartPlus, FaHeart } from "react-icons/fa"; // Import cart and favorite icons
 
 const products = [
   { id: 1, name: "Pain Relief Gel", category: "Pain Relief", price: 120, unit: "100gms", image: "https://www.netmeds.com/images/product-v1/600x600/1099137/flamisun_instant_pain_relief_gel_50_gm_585385_0_0.jpg" },
@@ -15,87 +15,99 @@ const products = [
 ];
 
 const Products = () => {
-  const [viewAll, setViewAll] = useState(false);
-  const [quantities, setQuantities] = useState(products.reduce((acc, product) => {
-    acc[product.id] = 1;
-    return acc;
-  }, {}));
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [sortOption, setSortOption] = useState("");
 
-  const handleQuantityChange = (id, increment) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [id]: Math.max(1, prev[id] + increment),
-    }));
+  const handleSortChange = (option) => {
+    setSortOption(option);
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+      if (option === "priceAsc") return a.price - b.price;
+      if (option === "priceDesc") return b.price - a.price;
+      if (option === "nameAsc") return a.name.localeCompare(b.name);
+      return 0;
+    });
+    setFilteredProducts(sortedProducts);
   };
 
-  const displayedProducts = viewAll ? products : products.slice(0, 3);
+  const handleFilterChange = (category) => {
+    if (category === "All") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter((product) => product.category === category);
+      setFilteredProducts(filtered);
+    }
+  };
 
   return (
-    <div className="container flex flex-wrap justify-around  mx-auto p-4">
-      {/* Banner */}
-      <div className="flex flex-wrap w-full bg-yellow-100 rounded-lg shadow-md p-6 sm:flex-col lg:w-1/4">
-        <div className="sm:w-full">
-          <img
-            src="https://img.freepik.com/premium-photo/happy-pharmacist-paper-bag-patient-with-clipboard-signature-prescription-consultation-pharmacy-black-man-medical-healthcare-professional-giving-medication-sick-customer_590464-216997.jpg"
-            alt="Healthy Hair"
-            className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
-          />
-        </div>
-        <div className="sm:w-full text-justify p-6">
-  <h1 className="text-3xl font-bold text-green-700">Nature's Wellness Pharmacy</h1>
-  <p className="text-lg text-gray-700 mt-2 ">
-    Explore our trusted range of medicines for all your health needs. We also specialize in crafting unique hair oils infused with natural extracts, including formulations using rabbit blood, to ensure strong and healthy hair.
-  </p>
-  <button
-    className="mt-4 bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
-    onClick={() => setViewAll(!viewAll)}
-  >
-    {viewAll ? "Show Less Products" : "View All Products"}
-  </button>
-</div>
+    <div className="container mx-auto p-8">
+      <h1 className="text-4xl font-bold text-green-700 text-center mb-6">OUR PRODUCTS</h1>
 
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <label className="mr-2 text-gray-700">Filter by Category:</label>
+          <select
+            className="p-2 border rounded"
+            onChange={(e) => handleFilterChange(e.target.value)}
+          >
+            <option value="All">All</option>
+            <option value="Pain Relief">Pain Relief</option>
+            <option value="Cough & Cold">Cough & Cold</option>
+            <option value="Vitamins">Vitamins</option>
+            <option value="First Aid">First Aid</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Diabetes Care">Diabetes Care</option>
+            <option value="Digestion">Digestion</option>
+            <option value="Allergy Care">Allergy Care</option>
+            <option value="Cold Care">Cold Care</option>
+            <option value="Eye Care">Eye Care</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="mr-2 text-gray-700">Sort by:</label>
+          <select
+            className="p-2 border rounded"
+            value={sortOption}
+            onChange={(e) => handleSortChange(e.target.value)}
+          >
+            <option value="">Select</option>
+            <option value="priceAsc">Price (Low to High)</option>
+            <option value="priceDesc">Price (High to Low)</option>
+            <option value="nameAsc">Name (A-Z)</option>
+          </select>
+        </div>
       </div>
 
-      {/* Products */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 h-fit lg:grid-cols-3 gap-6 mt-8">
-        {displayedProducts.map((product) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredProducts.map((product) => (
           <div
             key={product.id}
-            className="relative border rounded-lg p-4 shadow-lg hover:shadow-xl hover:border-green-500 transition-all group"
+            className="border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow bg-white"
           >
-            {/* Product Image */}
             <img
               src={product.image}
               alt={product.name}
               className="w-full h-48 object-cover rounded-md"
             />
+            <FaHeart className=" text-red-500 hover:text-green-600 text-2xl mt-2 cursor-pointer" title="Add to Favorites" />
+
             <div className="mt-4">
               <p className="text-sm text-yellow-600 font-semibold">{product.category}</p>
               <h2 className="text-lg font-bold mt-1">{product.name}</h2>
               <p className="text-sm text-gray-500">Unit: {product.unit}</p>
               <p className="text-green-600 font-bold mt-2">₹{product.price}.00 inc. GST</p>
-            </div>
 
-            {/* Hover Effect for Quantity and Cart */}
-            <div className="absolute inset-0 bg-white bg-opacity-90 rounded-lg opacity-0 group-hover:opacity-100 flex items-center justify-center flex-col transition-opacity">
-              <div className="flex items-center space-x-2 mb-4">
-                <button
-                  className="bg-gray-200 text-gray-700 rounded-full px-3 py-1"
-                  onClick={() => handleQuantityChange(product.id, -1)}
-                >
-                  -
-                </button>
-                <span className="text-sm font-medium">{quantities[product.id]}</span>
-                <button
-                  className="bg-gray-200 text-gray-700 rounded-full px-3 py-1"
-                  onClick={() => handleQuantityChange(product.id, 1)}
-                >
-                  +
-                </button>
-              </div>
-              <button className="bg-green-600 text-white p-3 rounded-full hover:bg-green-700">
-                <FaCartPlus className="text-xl" />
+              <div className="flex items-center justify-between mt-4">
+                <input
+                  type="number"
+                  min="1"
+                  defaultValue="1"
+                  className="w-16 p-2 border rounded text-center"
+                />
+                 <button className=" w-fit p-8 bg-green-500 text-white py-2 rounded hover:bg-green-600">
+                Buy Now
               </button>
+              </div>
             </div>
           </div>
         ))}

@@ -199,8 +199,8 @@ const Nav = () => {
             All Categories
           </li>
           {mobileCategories && (
-            <div className="space-y-2 pl-4">
-              <ul>
+            <div className="space-y-2 text-justify">
+              <ul className=" text-justify">
                 <li className="hover:text-yellow-400">Prescription Medicines</li>
                 <li className="hover:text-yellow-400">Over-the-Counter (OTC)</li>
                 <li className="hover:text-yellow-400">Health Supplements</li>

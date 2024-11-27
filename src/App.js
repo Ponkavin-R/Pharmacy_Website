@@ -8,6 +8,7 @@ import Products from './components/Products';
 import Footer from './components/Footer';
 import AboutUs from './components/Aboutus';
 import Contact from './components/Contact';
+import Traditional from './components/Traditional';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact/>} />
         </Routes>
+        <Traditional/>
         <Footer />
       </div>
     </Router>
