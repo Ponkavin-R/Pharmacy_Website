@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { FaCartPlus, FaHeart } from "react-icons/fa"; // Import cart and favorite icons
+import { FaShoppingCart } from "react-icons/fa";
 
+// Sample product data
 const products = [
   { id: 1, name: "Pain Relief Gel", category: "Pain Relief", price: 120, unit: "100gms", image: "https://www.netmeds.com/images/product-v1/600x600/1099137/flamisun_instant_pain_relief_gel_50_gm_585385_0_0.jpg" },
   { id: 2, name: "Cough Syrup", category: "Cough & Cold", price: 80, unit: "100ml", image: "https://via.placeholder.com/150" },
@@ -14,10 +15,21 @@ const products = [
   { id: 10, name: "Eye Drops", category: "Eye Care", price: 90, unit: "10ml", image: "https://via.placeholder.com/150" },
 ];
 
-const Products = () => {
+const Products = ({ onAddToCart }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOption, setSortOption] = useState("");
 
+  // Filter products by category
+  const handleFilterChange = (category) => {
+    if (category === "All") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter((product) => product.category === category);
+      setFilteredProducts(filtered);
+    }
+  };
+
+  // Sort products
   const handleSortChange = (option) => {
     setSortOption(option);
     const sortedProducts = [...filteredProducts].sort((a, b) => {
@@ -27,15 +39,6 @@ const Products = () => {
       return 0;
     });
     setFilteredProducts(sortedProducts);
-  };
-
-  const handleFilterChange = (category) => {
-    if (category === "All") {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter((product) => product.category === category);
-      setFilteredProducts(filtered);
-    }
   };
 
   return (
@@ -87,10 +90,8 @@ const Products = () => {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-48 object-cover rounded-md"
+              className="w-full h-48 object-cover rounded-md transition-transform duration-300 hover:scale-125"
             />
-            <FaHeart className=" text-red-500 hover:text-green-600 text-2xl mt-2 cursor-pointer" title="Add to Favorites" />
-
             <div className="mt-4">
               <p className="text-sm text-yellow-600 font-semibold">{product.category}</p>
               <h2 className="text-lg font-bold mt-1">{product.name}</h2>
@@ -104,10 +105,15 @@ const Products = () => {
                   defaultValue="1"
                   className="w-16 p-2 border rounded text-center"
                 />
-                 <button className=" w-fit p-8 bg-green-500 text-white py-2 rounded hover:bg-green-600">
+                <FaShoppingCart
+                  className="text-blue-500 hover:text-red-600 text-2xl cursor-pointer ml-2"
+                  title="Add to Cart"
+                  onClick={() => onAddToCart(product)}
+                />
+              </div>
+              <button className="w-full bg-green-500 text-white py-2 rounded mt-4 hover:bg-green-600">
                 Buy Now
               </button>
-              </div>
             </div>
           </div>
         ))}

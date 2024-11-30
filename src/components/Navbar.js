@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-const Nav = () => {
+import { FaShoppingCart } from "react-icons/fa";
+const Nav = ({cartItems}) => {
   const [showCategories, setShowCategories] = useState(false);
   const [showShop, setShowShop] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false); // State for mobile menu toggle
   const [mobileCategories, setMobileCategories] = useState(false); // Mobile categories toggle
   const [mobileShop, setMobileShop] = useState(false); // Mobile shop toggle
+  const [showCart, setShowCart] = useState(false);
+
+  const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div className="flex items-center justify-between bg-green-700 text-white px-4 py-4 m-3 rounded-md">
@@ -169,25 +172,30 @@ const Nav = () => {
 
           {/* Cart */}
           <div className="relative group">
-            <div className="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-full group-hover:w-14 group-hover:h-14 transition-all duration-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-yellow-700 group-hover:h-8 group-hover:w-8 transition-all duration-300"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 3h18l-2 12H5L3 3z"
-                />
-              </svg>
-            </div>
-            <span className="absolute top-0 right-0 w-5 h-5 text-xs font-semibold text-white bg-yellow-500 rounded-full flex items-center justify-center">
-              0
-            </span>
+             {/* Other Navbar Items */}
+      <div className="relative">
+        <div onClick={() => setShowCart(!showCart)} className="cursor-pointer">
+          <FaShoppingCart className="text-white text-2xl" />
+          <span className="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+            {cartItems.length}
+          </span>
+        </div>
+        {showCart && (
+          <div className="absolute right-0 top-full bg-white text-black p-4 rounded-lg shadow-lg w-80">
+            <h3 className="text-lg font-bold">Cart</h3>
+            <ul>
+              {cartItems.map((item) => (
+                <li key={item.id} className="flex justify-between py-2">
+                  <span>{item.name} (x{item.quantity})</span>
+                  <span>₹{item.price * item.quantity}</span>
+                </li>
+              ))}
+            </ul>
+            <hr className="my-2" />
+            <p className="text-right font-bold">Total: ₹{totalAmount}</p>
+          </div>
+        )}
+      </div>
           </div>
         </div>
       </div>

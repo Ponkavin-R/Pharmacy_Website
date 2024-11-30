@@ -27,23 +27,20 @@ const illustrations = [
 const Traditional = () => {
   return (
     <div
-    className="container mx-auto px-8 py-12"
-    style={{ backgroundColor: '#F6F6F6' }} // Muted gray background color
+    className="container mx-auto py-10 px-4 sm:px-6 lg:px-12"
+    style={{ backgroundColor: '#EAE0D1' }}
   >
-    <div className="flex justify-center space-x-6 overflow-x-auto">
+    <div className="grid grid-cols-5 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5 gap-6">
       {illustrations.map((item, index) => (
         <div
           key={index}
           className="relative group text-center transition-transform duration-300"
         >
-          <div
-            className="w-32 h-32 bg-white rounded-[20px] overflow-hidden mx-10 transform group-hover:rounded-full transition-all duration-300 justify-between"
-            style={{ boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }} // Light shadow for card effect
-          >
+          <div className="w-fit sm:w-36 h-32 sm:h-36 md:h-36 lg:h-48 overflow-hidden border-4 border-transparent transform transition-all duration-300">
             <img
               src={item.image}
-              alt={`Illustration ${index + 1}`}
-              className="w-full h-full object-contain"
+              alt={`Traditional-${index + 1}`}
+              className="w-full h-full object-cover hover:scale-110 hover:duration-300"
             />
           </div>
         </div>
