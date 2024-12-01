@@ -52,23 +52,31 @@ const Nav = ({cartItems}) => {
             <div className="absolute left-0 top-full bg-white text-black shadow-lg rounded-lg p-4 w-64 ">
               <ul className="space-y-2">
                 <li className="hover:text-green-600 flex justify-between items-center">
-                  Prescription Medicines <span>›</span>
+                Floor cleaner
                 </li>
                 <li className="hover:text-green-600 flex justify-between items-center">
-                  Over-the-Counter (OTC) <span>›</span>
-                </li>
-                <li className="hover:text-green-600 justify-between">Health Supplements</li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                  Personal Care <span>›</span>
+                Phenyle
                 </li>
                 <li className="hover:text-green-600 flex justify-between items-center">
-                  Mother & Baby Care <span>›</span>
+                Stain remover
                 </li>
-                <li className="hover:text-green-600">Medical Equipment</li>
-                <li className="hover:text-green-600">Homeopathy</li>
-                <li className="hover:text-green-600">Ayurveda</li>
                 <li className="hover:text-green-600 flex justify-between items-center">
-                  Fitness & Wellness <span>›</span>
+                Soap oil
+                </li>
+                <li className="hover:text-green-600 flex justify-between items-center">
+                Kennel Wash
+                </li>
+                <li className="hover:text-green-600 flex justify-between items-center">
+                Hair oil
+                </li>
+                <li className="hover:text-green-600 flex justify-between items-center">
+                Veterinary soap
+                </li>
+                <li className="hover:text-green-600 flex justify-between items-center">
+                Toilet Cleaner
+                </li>
+                <li className="hover:text-green-600 flex justify-between items-center">
+                Soap
                 </li>
               </ul>
             </div>
@@ -76,7 +84,8 @@ const Nav = ({cartItems}) => {
         </div>
 
         {/* Shop */}
-        <div
+        
+        {/* <div
           className="relative hidden lg:block bg-yellow-500 px-3 py-1 rounded-lg  hover:bg-yellow-600"
           onMouseEnter={() => setShowShop(true)}
           onMouseLeave={() => setShowShop(false)}
@@ -90,7 +99,7 @@ const Nav = ({cartItems}) => {
           {showShop && (
             <div className="absolute left-0 top-full bg-white text-black shadow-lg rounded-lg p-4 w-96">
               <div className="grid grid-cols-3 gap-4">
-                {/* Categories Types */}
+                {/* Categories Types 
                 <div>
                   <h4 className="font-bold mb-2">CATEGORIES TYPES</h4>
                   <ul className="space-y-2">
@@ -102,7 +111,7 @@ const Nav = ({cartItems}) => {
                     <li className="hover:text-green-600">Medical Equipment</li>
                   </ul>
                 </div>
-                {/* Hot Sellers */}
+                {/* Hot Sellers 
                 <div>
                   <h4 className="font-bold mb-2">HOT SELLERS</h4>
                   <ul className="space-y-2">
@@ -114,7 +123,7 @@ const Nav = ({cartItems}) => {
                   </ul>
                 </div>
                 
-                {/* Image Section */}
+                {/* Image Section 
                 <div>
                   <img
                     src="https://via.placeholder.com/150"
@@ -125,7 +134,7 @@ const Nav = ({cartItems}) => {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
 
         {/* About and Contact */}
         <div className="space-x-4">
@@ -209,27 +218,19 @@ const Nav = ({cartItems}) => {
           {mobileCategories && (
             <div className="space-y-2 text-justify">
               <ul className=" text-justify">
-                <li className="hover:text-yellow-400">Prescription Medicines</li>
-                <li className="hover:text-yellow-400">Over-the-Counter (OTC)</li>
-                <li className="hover:text-yellow-400">Health Supplements</li>
-                <li className="hover:text-yellow-400">Personal Care</li>
-                <li className="hover:text-yellow-400">Mother & Baby Care</li>
-                <li className="hover:text-yellow-400">Medical Equipment</li>
+                <li className="hover:text-yellow-400">Floor cleaner</li>
+                <li className="hover:text-yellow-400">Phenyle</li>
+                <li className="hover:text-yellow-400">Stain remover</li>
+                <li className="hover:text-yellow-400">Soap oil</li>
+                <li className="hover:text-yellow-400">Kennel Wash</li>
+                <li className="hover:text-yellow-400">Hair oil</li>
+                <li className="hover:text-yellow-400">Veterinary soap</li>
+                <li className="hover:text-yellow-400">Toilet Cleaner</li>
+                <li className="hover:text-yellow-400">Soap</li>
               </ul>
             </div>
           )}
-          <li className="hover:text-yellow-400 cursor-pointer" onClick={() => setMobileShop(!mobileShop)}>
-            Shop
-          </li>
-          {mobileShop && (
-            <div className="space-y-2 pl-4">
-              <ul>
-                <li className="hover:text-yellow-400">Hot Sellers</li>
-                <li className="hover:text-yellow-400">Latest Products</li>
-                <li className="hover:text-yellow-400">Discounted Items</li>
-              </ul>
-            </div>
-          )}
+        
         </ul>
       </div>
     </div>
