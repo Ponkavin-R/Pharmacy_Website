@@ -117,7 +117,7 @@
 
 // export default Footer;
 import React from "react";
-
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="bg-green-900 text-white py-8">
@@ -137,83 +137,22 @@ const Footer = () => {
           <h3 className="text-lg font-bold text-yellow-500">Factory Location</h3>
           <p className="mt-2">#9 Vijaya Nagar Srinivasapuram Post</p>
           <p>Thanjavur, TN 613009</p>
-          <div className="mt-4 flex justify-center items-center md:justify-start">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-yellow-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15.05 12.72l.9-.62a1 1 0 00.15-1.63L14.5 8.5M9.55 6.63a2.57 2.57 0 113.9 3.9L9.55 6.63zM9.55 18.15a3.43 3.43 0 110-4.86M9.55 18.15a3.43 3.43 0 110-4.86m4.9-4.13c.45-.4.6-1 .15-1.63l-.9-.62"
-              />
-            </svg>
-            <span className="ml-2 text-yellow-500">Toll-Free (080-6258-007)</span>
-          </div>
+          
         </div>
 
         {/* Social Media and Payments */}
         <div className="text-center md:text-right">
           <h3 className="text-lg font-bold text-yellow-500">Follow Us</h3>
           <div className="mt-2 flex justify-center md:justify-end space-x-4">
+            
             <a href="#" className="text-white hover:text-yellow-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.667C14 5.924 14.667 5 15.77 5H18V0h-2.5C11.433 0 9 2.134 9 6v2z" />
-              </svg>
+           <FaInstagram className="h-6 w-6" />
             </a>
             <a href="#" className="text-white hover:text-yellow-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M24 4.557a9.828 9.828 0 01-2.828.775A4.916 4.916 0 0023.337 3c-.938.555-1.978.959-3.084 1.175a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.91 4.91 0 001.523 6.573 4.904 4.904 0 01-2.23-.616c-.054 2.28 1.582 4.415 3.949 4.89a4.937 4.937 0 01-2.224.084 4.92 4.92 0 004.604 3.419A9.867 9.867 0 010 21.539a13.94 13.94 0 007.548 2.211c9.142 0 14.307-7.721 14.307-14.417 0-.22-.005-.439-.014-.657A10.243 10.243 0 0024 4.557z" />
-              </svg>
-            </a>
-            <a href="#" className="text-white hover:text-yellow-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M19.615 3H4.385C3.62 3 3 3.62 3 4.385v15.23C3 20.38 3.62 21 4.385 21H12v-6H9.844v-3H12V9.462c0-2.214 1.356-3.423 3.33-3.423.948 0 1.763.07 2.001.102v2.32h-1.375c-1.08 0-1.291.513-1.291 1.267V12h2.582l-.338 3H14.67v6h4.945c.765 0 1.385-.62 1.385-1.385V4.385C21 3.62 20.38 3 19.615 3z" />
-              </svg>
+           <FaFacebook className="h-6 w-6" />
             </a>
           </div>
-          <h3 className="mt-6 text-lg font-bold text-yellow-500">Accept Payment</h3>
-          <div className="mt-2 flex justify-center md:justify-end space-x-4">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Visa_2021.svg"
-              alt="Visa"
-              className="h-6"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-              alt="Mastercard"
-              className="h-6"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-              alt="PayPal"
-              className="h-6"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Bitcoin.svg"
-              alt="Bitcoin"
-              className="h-6"
-            />
-          </div>
+         
         </div>
       </div>
     </footer>

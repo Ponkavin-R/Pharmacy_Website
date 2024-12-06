@@ -1,15 +1,42 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-const Nav = ({cartItems}) => {
+import { FaTimes } from "react-icons/fa"; // Importing the X icon
+
+const Nav = ({ cartItems }) => {
   const [showCategories, setShowCategories] = useState(false);
-  const [showShop, setShowShop] = useState(false);
-  const [mobileMenu, setMobileMenu] = useState(false); // State for mobile menu toggle
-  const [mobileCategories, setMobileCategories] = useState(false); // Mobile categories toggle
-  const [mobileShop, setMobileShop] = useState(false); // Mobile shop toggle
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileCategories, setMobileCategories] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const [showAddressPopup, setShowAddressPopup] = useState(false); // State for address popup
+  const [userData, setUserData] = useState({
+    name: "",
+    phone: "",
+    address: "",
+  });
 
   const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleCheckout = () => {
+    setShowAddressPopup(true); // Show address popup when checkout button is clicked
+  };
+
+  const handleAddressSubmit = () => {
+    // Format the cart items and user address for the WhatsApp message
+    const whatsappNumber = "6381194126"; // Replace with your WhatsApp number
+    const message = `*Checkout Details*%0A%0A${cartItems
+      .map(
+        (item) =>
+          `*${item.name}* - ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}`
+      )
+      .join("%0A")}%0A%0A*Total Amount:* ₹${totalAmount}%0A%0A*Shipping Details*%0AName: ${userData.name}%0APhone: ${userData.phone}%0AAddress: ${userData.address}`;
+
+    // Open WhatsApp link with the message
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+    window.open(whatsappURL, "_blank");
+
+    setShowAddressPopup(false); // Hide the popup after submission
+  };
 
   return (
     <div className="flex items-center justify-between bg-green-700 text-white px-4 py-4 m-3 rounded-md">
@@ -49,92 +76,21 @@ const Nav = ({cartItems}) => {
             <span className="ml-2">▼</span>
           </button>
           {showCategories && (
-            <div className="absolute left-0 top-full bg-white text-black shadow-lg rounded-lg p-4 w-64 ">
+            <div className="absolute left-0 top-full bg-white text-black text-start shadow-lg rounded-lg p-4 w-64">
               <ul className="space-y-2">
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Floor cleaner
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Phenyle
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Stain remover
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Soap oil
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Kennel Wash
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Hair oil
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Veterinary soap
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Toilet Cleaner
-                </li>
-                <li className="hover:text-green-600 flex justify-between items-center">
-                Soap
-                </li>
+                <li className="hover:text-green-600">Floor cleaner</li>
+                <li className="hover:text-green-600">Phenyle</li>
+                <li className="hover:text-green-600">Stain remover</li>
+                <li className="hover:text-green-600">Soap oil</li>
+                <li className="hover:text-green-600">Kennel Wash</li>
+                <li className="hover:text-green-600">Hair oil</li>
+                <li className="hover:text-green-600">Veterinary soap</li>
+                <li className="hover:text-green-600">Toilet Cleaner</li>
+                <li className="hover:text-green-600">Soap</li>
               </ul>
             </div>
           )}
         </div>
-
-        {/* Shop */}
-        
-        {/* <div
-          className="relative hidden lg:block bg-yellow-500 px-3 py-1 rounded-lg  hover:bg-yellow-600"
-          onMouseEnter={() => setShowShop(true)}
-          onMouseLeave={() => setShowShop(false)}
-        >
-          <a
-            href="#shop"
-            className="hover:text-yellow-400 flex items-center cursor-pointer"
-          >
-            Shop <span className="ml-2">▼</span>
-          </a>
-          {showShop && (
-            <div className="absolute left-0 top-full bg-white text-black shadow-lg rounded-lg p-4 w-96">
-              <div className="grid grid-cols-3 gap-4">
-                {/* Categories Types 
-                <div>
-                  <h4 className="font-bold mb-2">CATEGORIES TYPES</h4>
-                  <ul className="space-y-2">
-                    <li className="hover:text-green-600">Prescription Medicines</li>
-                    <li className="hover:text-green-600">Over-the-Counter (OTC)</li>
-                    <li className="hover:text-green-600">Health Supplements</li>
-                    <li className="hover:text-green-600">Personal Care</li>
-                    <li className="hover:text-green-600">Mother & Baby Care</li>
-                    <li className="hover:text-green-600">Medical Equipment</li>
-                  </ul>
-                </div>
-                {/* Hot Sellers 
-                <div>
-                  <h4 className="font-bold mb-2">HOT SELLERS</h4>
-                  <ul className="space-y-2">
-                    <li className="hover:text-green-600">Paracetamol Tablets</li>
-                    <li className="hover:text-green-600">Vitamin C Supplements</li>
-                    <li className="hover:text-green-600">Antacid Syrup</li>
-                    <li className="hover:text-green-600">Protein Powders</li>
-                    <li className="hover:text-green-600">Pain Relief Balm</li>
-                  </ul>
-                </div>
-                
-                {/* Image Section 
-                <div>
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Promotional"
-                    className="rounded-lg"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </div> */}
 
         {/* About and Contact */}
         <div className="space-x-4">
@@ -155,69 +111,61 @@ const Nav = ({cartItems}) => {
 
       {/* Right Section */}
       <div className="flex items-center space-x-2">
-        <div className="flex items-center space-x-4">
-          {/* Wishlist */}
-          <div className="relative group">
-            <div className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full group-hover:w-14 group-hover:h-14 transition-all duration-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-green-700 group-hover:h-8 group-hover:w-8 transition-all duration-300"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 4.318C12 4.318 7 8 7 12c0 3.318 5 5 5 5s5-1.682 5-5c0-4-5-7.682-5-7.682z"
-                />
-              </svg>
-            </div>
-            <span className="absolute top-0 right-0 w-5 h-5 text-xs font-semibold text-white bg-yellow-400 rounded-full flex items-center justify-center">
-              0
-            </span>
-          </div>
-
+        <div className="relative group">
           {/* Cart */}
-          <div className="relative group">
-             {/* Other Navbar Items */}
-      <div className="relative">
-        <div onClick={() => setShowCart(!showCart)} className="cursor-pointer">
-          <FaShoppingCart className="text-white text-2xl" />
-          <span className="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-            {cartItems.length}
-          </span>
-        </div>
-        {showCart && (
-          <div className="absolute right-0 top-full bg-white text-black p-4 rounded-lg shadow-lg w-80">
-            <h3 className="text-lg font-bold">Cart</h3>
-            <ul>
-              {cartItems.map((item) => (
-                <li key={item.id} className="flex justify-between py-2">
-                  <span>{item.name} (x{item.quantity})</span>
-                  <span>₹{item.price * item.quantity}</span>
-                </li>
-              ))}
-            </ul>
-            <hr className="my-2" />
-            <p className="text-right font-bold">Total: ₹{totalAmount}</p>
-          </div>
-        )}
-      </div>
+          <div className="relative">
+            <div
+              onClick={() => setShowCart(!showCart)}
+              className="cursor-pointer bg-green-100 p-3 rounded-full flex items-center justify-center"
+            >
+              <FaShoppingCart className="text-green-700 text-2xl group-hover:w-8 transition-all group-hover:h-8 duration-300" />
+              <span className="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-semibold group-hover:w-8 transition-all duration-300 rounded-full w-5 h-5 flex items-center justify-center">
+                {cartItems.length}
+              </span>
+            </div>
+            {showCart && (
+              <div className="absolute right-0 top-full bg-white text-black p-4 rounded-lg shadow-lg w-80">
+                <h3 className="text-lg font-bold">Cart</h3>
+                <ul>
+                  {cartItems.map((item) => (
+                    <li key={item.id} className="flex justify-between py-2">
+                      <span>
+                        {item.name} (x{item.quantity})
+                      </span>
+                      <span>₹{item.price * item.quantity}</span>
+                    </li>
+                  ))}
+                </ul>
+                <hr className="my-2" />
+                <p className="text-right font-bold">Total: ₹{totalAmount}</p>
+                <button
+                  onClick={handleCheckout}
+                  className="mt-4 bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 w-full"
+                >
+                  Checkout on WhatsApp
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden ${mobileMenu ? 'block' : 'hidden'} absolute top-60 left-1/2 transform -translate-x-1/2 bg-green-700 text-white p-6 w-40 rounded-md shadow-lg`}>
+      <div
+        className={`lg:hidden ${
+          mobileMenu ? "block" : "hidden"
+        } absolute top-60 left-1/2 transform -translate-x-1/2 bg-green-700 text-white p-6 w-40 rounded-md shadow-lg`}
+      >
         <ul className="space-y-6">
-          <li className="hover:text-yellow-400 hover:bg-green-500 cursor-pointer" onClick={() => setMobileCategories(!mobileCategories)}>
+          <li
+            className="hover:text-yellow-400 hover:bg-green-500 cursor-pointer"
+            onClick={() => setMobileCategories(!mobileCategories)}
+          >
             All Categories
           </li>
           {mobileCategories && (
-            <div className="space-y-2 text-justify">
-              <ul className=" text-justify">
+            <div className="space-y-2 text-start">
+              <ul>
                 <li className="hover:text-yellow-400">Floor cleaner</li>
                 <li className="hover:text-yellow-400">Phenyle</li>
                 <li className="hover:text-yellow-400">Stain remover</li>
@@ -230,9 +178,53 @@ const Nav = ({cartItems}) => {
               </ul>
             </div>
           )}
-        
         </ul>
       </div>
+
+      {/* Address Popup */}
+      {showAddressPopup && (
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg w-96">
+            <button
+              onClick={() => setShowAddressPopup(false)}
+              className=" justify-end relative text-end items-end -right-36  text-gray-500 hover:text-black"
+            >
+              <FaTimes size={28} />
+            </button>
+            <h3 className="text-lg text-green-700 font-bold mb-4">Enter Shipping Details</h3>
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Name"
+                value={userData.name}
+                onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+                className="w-full p-2 border text-gray-700 border-gray-300 rounded-md"
+              />
+              <input
+                type="text"
+                placeholder="Phone"
+                value={userData.phone}
+                onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
+                className="w-full p-2 border text-gray-700 border-gray-300 rounded-md"
+              />
+              <textarea
+                placeholder="Address"
+                value={userData.address}
+                onChange={(e) => setUserData({ ...userData, address: e.target.value })}
+                className="w-full p-2 border text-gray-700 border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mt-4 text-right">
+              <button
+                onClick={handleAddressSubmit}
+                className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

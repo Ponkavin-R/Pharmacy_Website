@@ -67,7 +67,7 @@ const Contact = () => {
           </div>
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Phone Number</h4>
-            <p className="text-gray-600">+88 (800) 123 4567</p>
+            <p className="text-gray-600">+91 6381194126</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Our Address</h4>
@@ -78,7 +78,7 @@ const Contact = () => {
         {/* WhatsApp Button */}
         <div className="mt-6 flex justify-center">
           <a
-            href="https://wa.me/7010039650"
+            href="https://wa.me/6381194126"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center px-6 py-3 text-white bg-green-700 rounded-lg hover:bg-green-600"

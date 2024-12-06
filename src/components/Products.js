@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaTimes } from "react-icons/fa";
  import p1 from '../assest/products/p1.JPG';
  import p2 from '../assest/products/p2.JPG';
  import p3 from '../assest/products/p3.JPG';
@@ -19,16 +19,19 @@ import { FaShoppingCart } from "react-icons/fa";
  import p17 from '../assest/products/p17.JPG';
  import p18 from '../assest/products/p18.jpg';
  import p19 from '../assest/products/p19.jpg';
+ import p01 from '../assest/products/01.jpg';
+ import p02 from '../assest/products/02.jpg';
+ import p03 from '../assest/products/03.jpg';
 
 // Sample product data
 const products = [
-  { id: 1, name: "Pain Relief Gel", category: "Pain Relief", price: 120, unit: "100gms", image: "https://www.netmeds.com/images/product-v1/600x600/1099137/flamisun_instant_pain_relief_gel_50_gm_585385_0_0.jpg" },
-  { id: 2, name: "Cough Syrup", category: "Cough & Cold", price: 80, unit: "100ml", image: "https://via.placeholder.com/150" },
-  { id: 3, name: "Vitamin Tablets", category: "Vitamins", price: 150, unit: "30 tablets", image: "https://via.placeholder.com/150" },
+  { id: 1, name: "Root cleaner", category: "Pain Relief", price: 350, unit: "1", image: p01 },
+  { id: 2, name: "Raja Kalpa Sooranam", category: "Cough & Cold", price: 1300, unit: "1", image: p02 },
+  { id: 3, name: "Rabbit hair growth Oil", category: "Hair oil", price: 250, unit: "1", image: p03},
   { id: 4, name: " Liya Floor Cleaner", category: "Floor cleaner", price: 50, unit: "50gms", image: p1 },
   { id: 5, name: "Liya Original Phenyle", category: "Phenyle", price: 200, unit: "50gms", image: p2 },
   { id: 6, name: "Liya Original Phenyle", category: "Phenyle", price: 300, unit: "30 tablets", image: p3 },
-  { id: 7, name: "Liya Acid", category: "Stain remover", price: 100, unit: "20 tablets", image: p4 },
+  { id: 7, name: "Liya Acid", category: "Stain remover", price: 199, unit: "10 Pics", image: p4 },
   { id: 8, name: "Liya Original Phenyle", category: "Phenyle", price: 180, unit: "50ml", image: p5 },
   { id: 9, name: "Liya Original Phenyle", category: "Phenyle", price: 140, unit: "30ml", image: p6 },
   { id: 10, name: "Liya Original Phenyle", category: "Phenyle", price: 90, unit: "10ml", image: p7 },
@@ -45,10 +48,34 @@ const products = [
   { id: 21, name: "Liya Floor Cleaner", category: "Floor Cleaner", price: 90, unit: "10ml", image: p18 },
   { id: 22, name: "Liya Toilet Cleaner", category: "Toilet Cleaner", price: 90, unit: "10ml", image: p19 },
 ];
-
 const Products = ({ onAddToCart }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOption, setSortOption] = useState("");
+  const [showAddressPopup, setShowAddressPopup] = useState(false);
+  const [userData, setUserData] = useState({
+    name: "",
+    phone: "",
+    address: ""
+  });
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // Handle "Buy Now" button click
+  const handleBuyNow = (product) => {
+    setSelectedProduct(product); // Store selected product
+    setShowAddressPopup(true); // Show the address popup
+  };
+
+  // Handle form submission and send data to WhatsApp
+  const handleAddressSubmit = () => {
+    if (!userData.name || !userData.phone || !userData.address) {
+      alert("Please fill in all fields");
+      return;
+    }
+    const message = `Hello! I am interested in buying the following product:\n\nProduct: ${selectedProduct.name}\nCategory: ${selectedProduct.category}\nPrice: ₹${selectedProduct.price}\nUnit: ${selectedProduct.unit}\n\nShipping Details:\nName: ${userData.name}\nPhone: ${userData.phone}\nAddress: ${userData.address}`;
+    const whatsappURL = `https://wa.me/6381194126?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, "_blank");
+    setShowAddressPopup(false); // Close the address popup after submission
+  };
 
   // Filter products by category
   const handleFilterChange = (category) => {
@@ -120,34 +147,75 @@ const Products = ({ onAddToCart }) => {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-48 object-cover rounded-md transition-transform duration-300 hover:scale-125"
+              className="w-full h-48 object-fill rounded-md transition-transform duration-300 hover:scale-110"
             />
             <div className="mt-4">
               <p className="text-sm text-yellow-600 font-semibold">{product.category}</p>
-              <h2 className="text-lg font-bold mt-1">{product.name}</h2>
-              <p className="text-sm text-gray-500">Unit: {product.unit}</p>
-              <p className="text-green-600 font-bold mt-2">₹{product.price}.00 inc. GST</p>
-
-              <div className="flex items-center justify-between mt-4">
-                <input
-                  type="number"
-                  min="1"
-                  defaultValue="1"
-                  className="w-16 p-2 border rounded text-center"
-                />
-                <FaShoppingCart
-                  className="text-blue-500 hover:text-red-600 text-2xl cursor-pointer ml-2"
-                  title="Add to Cart"
-                  onClick={() => onAddToCart(product)}
-                />
-              </div>
-              <button className="w-full bg-green-500 text-white py-2 rounded mt-4 hover:bg-green-600">
+              <h3 className="text-lg font-bold">{product.name}</h3>
+              <p className="text-gray-600">₹{product.price}</p>
+              <p className="text-gray-500">Unit: {product.unit}</p>
+            </div>
+            <div className="mt-4 flex justify-between">
+              <button
+                className="bg-green-500 text-white p-2 rounded hover:bg-green-600 transition"
+                onClick={() => onAddToCart(product)}
+              >
+                <FaShoppingCart className="inline mr-2" />
+                Add to Cart
+              </button>
+              <button
+                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+                onClick={() => handleBuyNow(product)}
+              >
                 Buy Now
               </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Address Popup */}
+      {showAddressPopup && (
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg w-96 relative">
+            <button
+              onClick={() => setShowAddressPopup(false)}
+              className="absolute top-2 right-2 text-gray-500 hover:text-black"
+            >
+              <FaTimes size={28} />
+            </button>
+            <h3 className="text-lg font-bold mb-4">Enter Shipping Details</h3>
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Name"
+                value={userData.name}
+                onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+                className="w-full px-4 py-2 border rounded-md text-black"
+              />
+              <input
+                type="text"
+                placeholder="Phone"
+                value={userData.phone}
+                onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
+                className="w-full px-4 py-2 border rounded-md text-black"
+              />
+              <textarea
+                placeholder="Address"
+                value={userData.address}
+                onChange={(e) => setUserData({ ...userData, address: e.target.value })}
+                className="w-full px-4 py-2 border rounded-md text-black"
+              ></textarea>
+            </div>
+            <button
+              onClick={handleAddressSubmit}
+              className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 mt-4"
+            >
+              Submit and Buy
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
