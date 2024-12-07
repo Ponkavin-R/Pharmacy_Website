@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import AboutUs from './components/Aboutus';
 import Contact from './components/Contact';
 import Traditional from './components/Traditional';
+import ProductDescriptionPage from './components/ProductDescription';
 
 function App() {
   const [cartItems, setCartItems] = useState([]); // Keep if needed for cart functionality
@@ -48,6 +49,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <ProductDescriptionPage/>
         <Traditional />
         <Footer />
       </div>
