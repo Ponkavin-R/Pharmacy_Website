@@ -28,54 +28,30 @@ const products = [
   { id: 1, name: "Root cleaner", category: "Pain Relief", price: 350, unit: "1", image: p01 },
   { id: 2, name: "Raja Kalpa Sooranam", category: "Cough & Cold", price: 1300, unit: "1", image: p02 },
   { id: 3, name: "Rabbit hair growth Oil", category: "Hair oil", price: 250, unit: "1", image: p03},
-  { id: 4, name: " Liya Floor Cleaner", category: "Floor cleaner", price: 50, unit: "50gms", image: p1 },
-  { id: 5, name: "Liya Original Phenyle", category: "Phenyle", price: 200, unit: "50gms", image: p2 },
-  { id: 6, name: "Liya Original Phenyle", category: "Phenyle", price: 300, unit: "30 tablets", image: p3 },
-  { id: 7, name: "Liya Acid", category: "Stain remover", price: 199, unit: "10 Pics", image: p4 },
-  { id: 8, name: "Liya Original Phenyle", category: "Phenyle", price: 180, unit: "50ml", image: p5 },
-  { id: 9, name: "Liya Original Phenyle", category: "Phenyle", price: 140, unit: "30ml", image: p6 },
-  { id: 10, name: "Liya Original Phenyle", category: "Phenyle", price: 90, unit: "10ml", image: p7 },
-  { id: 11, name: "Liya Soap Oil", category: "Soap oil", price: 90, unit: "10ml", image: p8 },
-  { id: 12, name: "Liya Original Phenyle", category: "Phenyle", price: 90, unit: "10ml", image: p9},
-  { id: 13, name: "Liya Original Phenyle", category: "Phenyle", price: 90, unit: "10ml", image: p10 },
-  { id: 14, name: "Bow Kennel Wash", category: "Kennel Wash", price: 90, unit: "10ml", image: p11 },
-  { id: 15, name: "Yal Natural Hair oil", category: "Hair oil", price: 90, unit: "10ml", image: p12},
-  { id: 16, name: "Coconut Oil Veterinary Soap", category: "Veterinary soap", price: 90, unit: "10ml", image: p13},
-  { id: 17, name: "Liya Floor Cleaner", category: "Floor cleaner", price: 90, unit: "10ml", image: p14 },
-  { id: 18, name: "Liya Toilet Cleaner", category: "Toilet Cleaner", price: 90, unit: "10ml", image: p15 },
-  { id: 19, name: "Brand soap", category: "Soap", price: 90, unit: "10ml", image: p16 },
-  { id: 20, name: "Bow Kennel Wash", category: "Kennel Wash", price: 90, unit: "10ml", image: p17 },
-  { id: 21, name: "Liya Floor Cleaner", category: "Floor Cleaner", price: 90, unit: "10ml", image: p18 },
-  { id: 22, name: "Liya Toilet Cleaner", category: "Toilet Cleaner", price: 90, unit: "10ml", image: p19 },
+  { id: 4, name: " Liya Floor Cleaner", category: "Floor cleaner", price: 499, unit: "10Lit", image: p1 },
+  { id: 5, name: "Liya Original Phenyle", category: "Phenyle", price: 199, unit: "1", image: p2 },
+  { id: 6, name: "Liya Original Phenyle", category: "Phenyle", price: 199, unit: "1", image: p3 },
+  { id: 7, name: "Liya Acid", category: "Stain remover", price: 199, unit: "10Pics", image: p4 },
+  { id: 8, name: "Liya Original Phenyle", category: "Phenyle", price: 199, unit: "1", image: p5 },
+  { id: 9, name: "Liya Original Phenyle", category: "Phenyle", price: 199, unit: "1", image: p6 },
+  { id: 10, name: "Liya Original Phenyle", category: "Phenyle", price: 199, unit: "1", image: p7 },
+  { id: 11, name: "Liya Soap Oil", category: "Soap oil", price: 399, unit: "10Lit", image: p8 },
+  { id: 12, name: "Liya Original Phenyle", category: "Phenyle", price: 199, unit: "1", image: p9},
+  { id: 13, name: "Liya Original Phenyle", category: "Phenyle", price: 199, unit: "1", image: p10 },
+  { id: 14, name: "Bow Kennel Wash", category: "Kennel Wash", price: 199, unit: "1", image: p11 },
+  { id: 15, name: "Yal Natural Hair oil", category: "Hair oil", price: 149, unit: "1", image: p12},
+  { id: 16, name: "Coconut Oil Veterinary Soap", category: "Veterinary soap", price: 69, unit: "1", image: p13},
+  { id: 17, name: "Liya Floor Cleaner", category: "Floor cleaner", price: 499, unit: "10Lit", image: p14 },
+  { id: 18, name: "Liya Toilet Cleaner", category: "Toilet Cleaner", price: 199, unit: "1", image: p15 },
+  { id: 19, name: "Brand soap", category: "Soap", price: 69, unit: "1", image: p16 },
+  { id: 20, name: "Bow Kennel Wash", category: "Kennel Wash", price: 199, unit: "1", image: p17 },
+  { id: 21, name: "Liya Floor Cleaner", category: "Floor Cleaner", price: 499, unit: "10Lit", image: p18 },
+  { id: 22, name: "Liya Toilet Cleaner", category: "Toilet Cleaner", price: 199, unit: "1", image: p19 },
 ];
 const Products = ({ onAddToCart }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOption, setSortOption] = useState("");
-  const [showAddressPopup, setShowAddressPopup] = useState(false);
-  const [userData, setUserData] = useState({
-    name: "",
-    phone: "",
-    address: ""
-  });
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
-  // Handle "Buy Now" button click
-  const handleBuyNow = (product) => {
-    setSelectedProduct(product); // Store selected product
-    setShowAddressPopup(true); // Show the address popup
-  };
-
-  // Handle form submission and send data to WhatsApp
-  const handleAddressSubmit = () => {
-    if (!userData.name || !userData.phone || !userData.address) {
-      alert("Please fill in all fields");
-      return;
-    }
-    const message = `Hello! I am interested in buying the following product:\n\nProduct: ${selectedProduct.name}\nCategory: ${selectedProduct.category}\nPrice: ₹${selectedProduct.price}\nUnit: ${selectedProduct.unit}\n\nShipping Details:\nName: ${userData.name}\nPhone: ${userData.phone}\nAddress: ${userData.address}`;
-    const whatsappURL = `https://wa.me/6381194126?text=${encodeURIComponent(message)}`;
-    window.open(whatsappURL, "_blank");
-    setShowAddressPopup(false); // Close the address popup after submission
-  };
+  const [quantities, setQuantities] = useState({});
 
   // Filter products by category
   const handleFilterChange = (category) => {
@@ -99,10 +75,16 @@ const Products = ({ onAddToCart }) => {
     setFilteredProducts(sortedProducts);
   };
 
+  // Handle quantity input
+  const handleQuantityChange = (id, value) => {
+    setQuantities({ ...quantities, [id]: Number(value) });
+  };
+
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-4xl font-bold text-green-700 text-center mb-6">OUR PRODUCTS</h1>
 
+      {/* Filter and Sort Controls */}
       <div className="flex justify-between items-center mb-6">
         <div>
           <label className="mr-2 text-gray-700">Filter by Category:</label>
@@ -112,14 +94,8 @@ const Products = ({ onAddToCart }) => {
           >
             <option value="All">All</option>
             <option value="Floor cleaner">Floor cleaner</option>
-            <option value="Phenyle">Phenyle</option>
-            <option value="Stain remover">Stain remover</option>
-            <option value="Soap oil">Soap oil</option>
-            <option value="Kennel Wash">Kennel Wash</option>
+            <option value="Pain Relief">Pain Relief</option>
             <option value="Hair oil">Hair oil</option>
-            <option value="Veterinary soap">Veterinary soap</option>
-            <option value="Toilet Cleaner">Toilet Cleaner</option>
-            <option value="Soap">Soap</option>
           </select>
         </div>
 
@@ -138,7 +114,8 @@ const Products = ({ onAddToCart }) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {/* Products List */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-center">
         {filteredProducts.map((product) => (
           <div
             key={product.id}
@@ -155,67 +132,37 @@ const Products = ({ onAddToCart }) => {
               <p className="text-gray-600">₹{product.price}</p>
               <p className="text-gray-500">Unit: {product.unit}</p>
             </div>
-            <div className="mt-4 flex justify-between">
+
+            {/* Quantity Input */}
+            <div className="mt-4">
+              <label htmlFor={`quantity-${product.id}`} className="block text-sm text-gray-700 mb-2 text-start">
+                Quantity:
+              </label>
+              <input
+                type="number"
+                min="1"
+                placeholder="Quantity"
+                value={quantities[product.id] || ""}
+                className="w-full p-2 border rounded-md"
+                onChange={(e) => handleQuantityChange(product.id, e.target.value)}
+              />
+            </div>
+
+            {/* Add to Cart Button */}
+            <div className="mt-4">
               <button
-                className="bg-green-500 text-white p-2 rounded hover:bg-green-600 transition"
-                onClick={() => onAddToCart(product)}
+                className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600 transition"
+                onClick={() =>
+                  onAddToCart({ ...product, quantity: quantities[product.id] || 1 })
+                }
               >
                 <FaShoppingCart className="inline mr-2" />
                 Add to Cart
-              </button>
-              <button
-                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
-                onClick={() => handleBuyNow(product)}
-              >
-                Buy Now
               </button>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Address Popup */}
-      {showAddressPopup && (
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg w-96 relative">
-            <button
-              onClick={() => setShowAddressPopup(false)}
-              className="absolute top-2 right-2 text-gray-500 hover:text-black"
-            >
-              <FaTimes size={28} />
-            </button>
-            <h3 className="text-lg font-bold mb-4">Enter Shipping Details</h3>
-            <div className="space-y-4">
-              <input
-                type="text"
-                placeholder="Name"
-                value={userData.name}
-                onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-                className="w-full px-4 py-2 border rounded-md text-black"
-              />
-              <input
-                type="text"
-                placeholder="Phone"
-                value={userData.phone}
-                onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
-                className="w-full px-4 py-2 border rounded-md text-black"
-              />
-              <textarea
-                placeholder="Address"
-                value={userData.address}
-                onChange={(e) => setUserData({ ...userData, address: e.target.value })}
-                className="w-full px-4 py-2 border rounded-md text-black"
-              ></textarea>
-            </div>
-            <button
-              onClick={handleAddressSubmit}
-              className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 mt-4"
-            >
-              Submit and Buy
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

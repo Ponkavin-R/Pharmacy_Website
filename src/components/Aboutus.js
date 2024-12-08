@@ -32,17 +32,16 @@ const AboutUs = () => {
         <div>
           <h2 className="text-3xl text-green-700 font-bold mb-6">Our Story</h2>
           <p className="text-gray-700 leading-relaxed text-justify mb-6">
-            At <span className="font-semibold">Classic Natural</span>, we are
-            committed to providing premium-quality herbal medicines and hair
-            oils that blend the ancient science of Ayurveda with modern
-            research. Our journey began with a passion for creating solutions
-            that are natural, effective, and accessible to all.
+            At <span className="font-semibold">Classic Natural</span>, where nature meets purity in every product we create. We are committed to providing high-quality, eco-friendly, and health-focused products that cater to your everyday needs. Our mission is to deliver natural, safe, and effective solutions that promote a healthier lifestyle for you and your loved ones.
+
+At Classic Natural, we believe in the power of nature's goodness. Our diverse range of products includes pain relief solutions, natural hair care, cleaning essentials, pet care, and wellness products. Each product is carefully crafted using premium ingredients to ensure maximum effectiveness and safety.
           </p>
           <p className="text-gray-700 leading-relaxed text-justify">
-            Every product at Classic Natural is crafted with love and care,
-            using ingredients sourced sustainably from nature. Our mission is to
-            inspire healthier lifestyles while staying rooted in the timeless
-            wisdom of nature.
+          At Classic Natural, customer satisfaction is our top priority. We are committed to ensuring that every product meets the highest standards of quality, effectiveness, and safety. Our team continually strives to innovate and expand our product range, keeping in mind the well-being of our customers and the environment.
+
+With Classic Natural, you can trust that every product is a step towards a cleaner, healthier, and more natural lifestyle. We invite you to explore our wide selection and experience the magic of natural living.
+
+
           </p>
         </div>
 
@@ -103,56 +102,76 @@ const AboutUs = () => {
      
       </div>
       <div className="container mx-full justify-between px-4 py-12">
-        <div className="grid grid-cols-1 justify-between md:grid-cols-2 gap-12">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-green-700">Key Highlights</h2>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-4">
-                <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
-                  ✓
-                </span>
-                <span>
-                  <strong>Founded:</strong> 2010 - over a decade of trust and
-                  excellence.
-                </span>
-              </li>
-              <li className="flex items-start space-x-4">
-                <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
-                  ✓
-                </span>
-                <span>
-                  <strong>Global Reach:</strong> Available in 30+ countries
-                  worldwide.
-                </span>
-              </li>
-              <li className="flex items-start space-x-4">
-                <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
-                  ✓
-                </span>
-                <span>
-                  <strong>Products:</strong> Over 50 herbal medicines and oils.
-                </span>
-              </li>
-              <li className="flex items-start space-x-4">
-                <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
-                  ✓
-                </span>
-                <span>
-                  <strong>Team:</strong> 300+ dedicated professionals.
-                </span>
-              </li>
-            </ul>
-          </div>
+  <div className="grid grid-cols-1 justify-between md:grid-cols-2 gap-12">
+    {/* Left Section - Product Highlights */}
+    <div className="space-y-6">
+      <h2 className="text-3xl font-bold text-green-700">Our Product Line</h2>
+      <ul className="space-y-4 text-start">
+        <li className="flex items-start space-x-4">
+          <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
+            ✓
+          </span>
+          <span>
+            <strong>Herbal Remedies:</strong> From <strong>Root Cleaner</strong> to 
+            <strong> Raja Kalpa Sooranam</strong>, we offer natural solutions for 
+            pain relief and cold & cough.
+          </span>
+        </li>
+        <li className="flex items-start space-x-4">
+          <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
+            ✓
+          </span>
+          <span>
+            <strong>Personal Care:</strong> Nourish your hair with 
+            <strong> Rabbit Hair Growth Oil</strong> and 
+            <strong> Yal Natural Hair Oil</strong>, crafted to promote healthy hair growth.
+          </span>
+        </li>
+        <li className="flex items-start space-x-4">
+          <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
+            ✓
+          </span>
+          <span>
+            <strong>Household Cleaning:</strong> Keep your home fresh and clean with 
+            <strong> Liya Floor Cleaner</strong>, 
+            <strong> Liya Original Phenyle</strong>, 
+            <strong> Liya Acid</strong>, and 
+            <strong> Liya Toilet Cleaner</strong>.
+          </span>
+        </li>
+        <li className="flex items-start space-x-4">
+        <span className="w-6 -ml-1 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
+            ✓
+          </span>
+          <span>
+            <strong>Pet Care:</strong> Maintain a hygienic environment for your pets with 
+            <strong> Bow Kennel Wash</strong>.
+          </span>
+        </li>
+        <li className="flex items-start space-x-4">
+          <span className="w-8 h-8 flex items-center justify-center bg-green-700 text-yellow-500 font-bold rounded-full">
+            ✓
+          </span>
+          <span>
+            <strong>Everyday Essentials:</strong> Our versatile cleaning products, like 
+            <strong> Soap Oil</strong> and 
+            <strong> Veterinary Soaps</strong>, provide multi-purpose utility.
+          </span>
+        </li>
+      </ul>
+    </div>
 
-          <div>
-            <img
-              src={Logo}
-              alt="Classic Natural"
-              className="rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
-        </div>
+    {/* Right Section - Company Logo Image */}
+    <div>
+      <img
+        src={Logo}
+        alt="Classic Natural"
+        className="rounded-lg shadow-lg"
+      />
+    </div>
+  </div>
+</div>
+
     </div>
   );
 };

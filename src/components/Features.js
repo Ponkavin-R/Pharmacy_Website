@@ -6,23 +6,23 @@ const Features = () => {
   const features = [
     {
       icon: faPills,
-      title: "Quality Medicines",
-      description: "We provide high-quality medicines directly from trusted manufacturers.",
+      title: "Quality Product's",
+      description: "We provide high-quality Product's directly from trusted manufacturers.",
     },
     {
       icon: faUserMd,
-      title: "Expert Advice",
-      description: "Consult with certified pharmacists for the right advice on your medications.",
+      title: "Expert Guidance",
+      description: "Our dedicated support team is here to guide you in selecting the right products. Get advice tailored to your preferences and needs.",
     },
     {
       icon: faLeaf,
-      title: "Natural Options",
-      description: "Explore our range of natural and organic health supplements.",
+      title: "Diverse Product Range",
+      description: "From everyday essentials to exclusive collections, explore a wide range of categories that cater to every lifestyle and requirement.",
     },
     {
       icon: faShippingFast,
       title: "Free Shipping",
-      description: "Enjoy free shipping on orders above ₹ 499.",
+      description: "Enjoy hassle-free shopping with fast shipping and no extra charges. We make sure your products reach you quickly and safely.",
     },
   ];
 

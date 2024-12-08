@@ -68,10 +68,11 @@ const Contact = () => {
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Phone Number</h4>
             <p className="text-gray-600">+91 6381194126</p>
+            <p className="text-gray-600">+91 8015371070</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Our Address</h4>
-            <p className="text-gray-600">82 12th Street, Office 14</p>
+            <p className="text-gray-600">114, Middle Street, Alaguneri, Kuruvikulam,Thenkasi (Dist), Tamil Nadu - 627754</p>
           </div>
         </div>
 
