@@ -29,7 +29,7 @@ const Nav = ({ cartItems }) => {
     const message = `*Checkout Details*%0A%0A${cartItems
       .map(
         (item) =>
-          `*Product Name: ${item.name}* - ₹Price: ${item.price} x Number Of Quantity: ${item.quantity} = ₹${
+          `*Product Name: ${item.name}*  Price: ₹ ${item.price} x Number Of Quantity: ${item.quantity}  Total= ₹${
             item.price * item.quantity
           }%0A%0A `
       )
