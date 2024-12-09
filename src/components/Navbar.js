@@ -4,7 +4,6 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa"; // Importing the X icon
 
 const Nav = ({ cartItems }) => {
-  const [showCategories, setShowCategories] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [mobileCategories, setMobileCategories] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -29,7 +28,7 @@ const Nav = ({ cartItems }) => {
     const message = `*Checkout Details*%0A%0A${cartItems
       .map(
         (item) =>
-          `*Product Name: ${item.name}*  Price: ₹ ${item.price} x Number Of Quantity: ${item.quantity}  Total= ₹${
+          `Product Name: ${item.name}    Price: ₹ ${item.price}      Number Of Quantity: ${item.quantity}   Total= ₹${
             item.price * item.quantity
           }%0A%0A `
       )
@@ -46,56 +45,7 @@ const Nav = ({ cartItems }) => {
     <div className="flex items-center justify-between bg-green-700 text-white px-4 py-4 m-3 rounded-md">
       {/* Left Section */}
       <div className="flex items-center space-x-4">
-        {/* Mobile Hamburger Icon */}
-        <div className="lg:hidden">
-          <button
-            className="text-white"
-            onClick={() => setMobileMenu(!mobileMenu)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
-
-        {/* All Categories */}
-        <div
-          className="relative hidden lg:block"
-          onMouseEnter={() => setShowCategories(true)}
-          onMouseLeave={() => setShowCategories(false)}
-        >
-          <button className="bg-yellow-500 text-white px-3 py-1 rounded-lg font-bold hover:bg-yellow-600 flex items-center">
-            All Categories
-            <span className="ml-2">▼</span>
-          </button>
-          {showCategories && (
-            <div className="absolute left-0 top-full bg-white text-black text-start shadow-lg rounded-lg p-4 w-64">
-              <ul className="space-y-2">
-                <li className="hover:text-green-600">Floor cleaner</li>
-                <li className="hover:text-green-600">Phenyle</li>
-                <li className="hover:text-green-600">Stain remover</li>
-                <li className="hover:text-green-600">Soap oil</li>
-                <li className="hover:text-green-600">Kennel Wash</li>
-                <li className="hover:text-green-600">Hair oil</li>
-                <li className="hover:text-green-600">Veterinary soap</li>
-                <li className="hover:text-green-600">Toilet Cleaner</li>
-                <li className="hover:text-green-600">Soap</li>
-              </ul>
-            </div>
-          )}
-        </div>
-
+       
         {/* About and Contact */}
         <div className="space-x-4">
           <Link
@@ -157,36 +107,7 @@ const Nav = ({ cartItems }) => {
 
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`lg:hidden ${
-          mobileMenu ? "block" : "hidden"
-        } absolute top-60 left-1/2 transform -translate-x-1/2 bg-green-700 text-white p-6 w-40 rounded-md shadow-lg`}
-      >
-        <ul className="space-y-6">
-          <li
-            className="hover:text-yellow-400 hover:bg-green-500 cursor-pointer"
-            onClick={() => setMobileCategories(!mobileCategories)}
-          >
-            All Categories
-          </li>
-          {mobileCategories && (
-            <div className="space-y-2 text-start">
-              <ul>
-                <li className="hover:text-yellow-400">Floor cleaner</li>
-                <li className="hover:text-yellow-400">Phenyle</li>
-                <li className="hover:text-yellow-400">Stain remover</li>
-                <li className="hover:text-yellow-400">Soap oil</li>
-                <li className="hover:text-yellow-400">Kennel Wash</li>
-                <li className="hover:text-yellow-400">Hair oil</li>
-                <li className="hover:text-yellow-400">Veterinary soap</li>
-                <li className="hover:text-yellow-400">Toilet Cleaner</li>
-                <li className="hover:text-yellow-400">Soap</li>
-              </ul>
-            </div>
-          )}
-        </ul>
-      </div>
+      
 
       {/* Address Popup */}
       {showAddressPopup && (
@@ -194,7 +115,7 @@ const Nav = ({ cartItems }) => {
           <div className="bg-white p-6 rounded-lg w-96">
             <button
               onClick={() => setShowAddressPopup(false)}
-              className=" justify-end relative text-end items-end -right-36  text-gray-500 hover:text-black"
+              className=" justify-end relative text-end items-end left-72  text-gray-500 hover:text-black"
             >
               <FaTimes size={28} />
             </button>

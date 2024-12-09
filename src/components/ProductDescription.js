@@ -4,14 +4,14 @@ import { useState } from "react";
 import p01 from '../assest/products/01.jpg';
 import p02 from '../assest/products/02.jpg';
 import p03 from '../assest/products/03.jpg';
-import p1 from '../assest/products/p1.JPG';
- import p2 from '../assest/products/p2.JPG';
- import p3 from '../assest/products/p3.JPG';
- import p4 from '../assest/products/p4.JPG';
- import p5 from '../assest/products/p5.JPG';
- import p12 from '../assest/products/p12.JPG';
- import p13 from '../assest/products/p13.JPG';
- import p14 from '../assest/products/p14.JPG';
+import p1 from '../assest/products/p1.jpg';
+ import p2 from '../assest/products/p2.jpg';
+ import p3 from '../assest/products/p3.jpg';
+ import p4 from '../assest/products/p4.jpg';
+ import p5 from '../assest/products/p5.jpg';
+ import p12 from '../assest/products/p12.jpg';
+ import p13 from '../assest/products/p13.jpg';
+ import p14 from '../assest/products/p14.jpg';
  const products = [
     {
       id: 1,

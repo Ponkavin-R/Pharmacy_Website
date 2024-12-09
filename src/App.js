@@ -9,6 +9,7 @@ import AboutUs from "./components/Aboutus";
 import Contact from "./components/Contact";
 import Traditional from "./components/Traditional";
 import ProductDescriptionPage from "./components/ProductDescription";
+import { FaWhatsapp } from "react-icons/fa"; // Import WhatsApp Icon
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -44,9 +45,20 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+
       <ProductDescriptionPage />
       <Traditional />
       <Footer />
+
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/7598287008"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed right-6 bottom-6 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-all duration-300"
+      >
+        <FaWhatsapp className="h-8 w-8" />
+      </a>
     </Router>
   );
 }

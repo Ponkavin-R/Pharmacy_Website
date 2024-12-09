@@ -63,7 +63,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Email Address</h4>
-            <p className="text-gray-600">info@example.com</p>
+            <p className="text-gray-600">admin@classicnaturals.shop</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Phone Number</h4>
