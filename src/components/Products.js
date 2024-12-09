@@ -43,7 +43,7 @@ const products = [
   { id: 16, name: "Coconut Oil Veterinary Soap", category: "Veterinary soap", price: 69, unit: "1", image: p13},
   { id: 17, name: "Liya Floor Cleaner", category: "Floor cleaner", price: 499, unit: "10Lit", image: p14 },
   { id: 18, name: "Liya Toilet Cleaner", category: "Toilet Cleaner", price: 199, unit: "10Pics", image: p15 },
-  { id: 19, name: "Brand soap", category: "Soap", price: 69, unit: "1", image: p16 },
+  { id: 19, name: "Brand soap Coconut Oil | Human Soap", category: "Soap", price: 69, unit: "1", image: p16 },
   { id: 20, name: "Bow Kennel Wash", category: "Kennel Wash", price: 199, unit: "1", image: p17 },
   { id: 21, name: "Liya Floor Cleaner", category: "Floor Cleaner", price: 499, unit: "10Lit", image: p18 },
   { id: 22, name: "Liya Toilet Cleaner", category: "Toilet Cleaner", price: 199, unit: "10Pics  ", image: p19 },

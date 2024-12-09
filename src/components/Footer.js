@@ -40,9 +40,9 @@ const Footer = () => {
         <div className="flex-1 text-center md:text-right">
           <h3 className="text-lg font-bold text-yellow-500">Contact Us</h3>
           <div className="mt-2 space-y-2">
-            <p>📞 +91 6381194126</p>
-            <p>📞 +91 8015371070</p>
-            <p>📧 admin@classicnaturals.shop</p>
+            <p>📞 +91 6384685325</p>
+            <p>📞 +91 8524024825</p>
+            <p>📧 owner.classicnaturals@gmail.com</p>
           </div>
         </div>
       </div>

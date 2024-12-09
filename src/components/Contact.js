@@ -63,12 +63,12 @@ const Contact = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Email Address</h4>
-            <p className="text-gray-600">admin@classicnaturals.shop</p>
+            <p className="text-gray-600">owner.classicnaturals@gmail.com</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Phone Number</h4>
-            <p className="text-gray-600">+91 6381194126</p>
-            <p className="text-gray-600">+91 8015371070</p>
+            <p className="text-gray-600">+91 6384685325</p>
+            <p className="text-gray-600">+91 8524024825</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow">
             <h4 className="font-medium text-lg">Our Address</h4>
