@@ -52,7 +52,7 @@ function App() {
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/7598287008"
+        href="https://wa.me/6384685325"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed right-6 bottom-6 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-all duration-300"

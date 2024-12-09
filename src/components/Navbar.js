@@ -24,7 +24,7 @@ const Nav = ({ cartItems }) => {
   };
 
   const handleAddressSubmit = () => {
-    const whatsappNumber = "6381194126";
+    const whatsappNumber = "6384685325";
     const message = `*Checkout Details*%0A%0A${cartItems
       .map(
         (item) =>

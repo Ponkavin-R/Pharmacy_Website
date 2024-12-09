@@ -79,7 +79,7 @@ const Contact = () => {
         {/* WhatsApp Button */}
         <div className="mt-6 flex justify-center">
           <a
-            href="https://wa.me/6381194126"
+            href="https://wa.me/6384685325"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center px-6 py-3 text-white bg-green-700 rounded-lg hover:bg-green-600"

@@ -27,10 +27,10 @@ const Footer = () => {
         <div className="flex-1 text-center md:text-right">
           <h3 className="text-lg lg:-mt-12 font-bold text-yellow-500">Follow Us</h3>
           <div className="mt-2 flex justify-center md:justify-end space-x-6">
-            <a href="#" className="text-white hover:text-yellow-500">
+            <a href="https://www.instagram.com/classicnaturalsdotshop/" className="text-white hover:text-yellow-500">
               <FaInstagram className="h-6 w-6" />
             </a>
-            <a href="#" className="text-white hover:text-yellow-500">
+            <a href="https://www.facebook.com/profile.php?id=61570172495936" className="text-white hover:text-yellow-500">
               <FaFacebook className="h-6 w-6" />
             </a>
           </div>
